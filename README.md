@@ -1,2 +1,2 @@
 # CSV-File-Processor
-A student project for processing CSV file format.
+An intern project for processing CSV file format.
