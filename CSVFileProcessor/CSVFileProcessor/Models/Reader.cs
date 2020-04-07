@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CSVFileProcessor.Models
 {
-    class Reader : IReader
+    public class Reader : IReader
     {
         public string Directory { get; set; }
 
@@ -15,20 +15,20 @@ namespace CSVFileProcessor.Models
             this.Directory = directory;
         }
 
-        public ICollection<string> Read(string directory)
+        public ICollection<string> Read()
         {
-            using (StreamReader str = new StreamReader(directory))
-            {
-                List<string> data = new List<string>();
-                string line = string.Empty;
+            List<string> data = new List<string>();
+            string line = string.Empty;
 
-                while((line = str.ReadLine()) != null)
+            using (StreamReader str = new StreamReader(this.Directory))
+            {
+
+                while ((line = str.ReadLine()) != null)
                 {
                     data.Add(line.Split(new char[] { '\t', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToString());
                 }
-                ;
-                return data;
             }
+            return data;
         }
     }
 }
