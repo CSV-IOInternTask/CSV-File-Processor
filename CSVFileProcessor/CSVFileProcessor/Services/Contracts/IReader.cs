@@ -8,7 +8,7 @@ namespace CSVFileProcessor.Services.Contracts
     {
         public string Directory { get; }
 
-        public ICollection<string> Read(string directory);
+        public ICollection<string> Read();
 
 
 
