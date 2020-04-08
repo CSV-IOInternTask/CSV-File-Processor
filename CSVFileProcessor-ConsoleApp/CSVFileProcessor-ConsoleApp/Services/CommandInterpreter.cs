@@ -24,12 +24,11 @@ namespace CSVFileProcessor_ConsoleApp.Services
                 switch (command)
                 {
                     case "SetFilePath":
-
+                        
                     default:
                         return;
-                   
-                }
 
+                }
             }
         }
     }
