@@ -1,6 +1,8 @@
-﻿namespace CSVFileProcessor.Services.Contracts
+﻿using System.Collections.Generic;
+
+namespace CSVFileProcessor_ConsoleApp.Services.Contracts
 {
-    using System.Collections.Generic;
+    
     public interface IReader
     {
         public string Directory { get; }

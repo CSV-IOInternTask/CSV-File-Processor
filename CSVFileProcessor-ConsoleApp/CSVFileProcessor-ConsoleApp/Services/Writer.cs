@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-using CSVFileProcessor.Services.Contracts;
+using CSVFileProcessor_ConsoleApp.Services.Contracts;
 
-namespace CSVFileProcessor.Services
+namespace CSVFileProcessor_ConsoleApp.Services
 {
     public class Writer : IWriter
     {

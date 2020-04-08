@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace CSVFileProcessor.Services.Contracts
+namespace CSVFileProcessor_ConsoleApp.Services.Contracts
 {
     public interface IWriter
     {

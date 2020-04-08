@@ -1,13 +1,12 @@
-﻿using CSVFileProcessor.Models;
-using CSVFileProcessor.Services;
-using CSVFileProcessor.Services.Contracts;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+using CSVFileProcessor_ConsoleApp.Models;
+using CSVFileProcessor_ConsoleApp.Services.Contracts;
 
 namespace CSVFileProcessor_ConsoleApp.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-
     public class Engine
     {
 
@@ -21,7 +20,7 @@ namespace CSVFileProcessor_ConsoleApp.Services
         public void Run()
         {
             this.ShowConsoleUI();
-            this.Command = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList();
+            
 
             IReader reader = new Reader();
             IWriter writer = new Writer();
@@ -29,7 +28,8 @@ namespace CSVFileProcessor_ConsoleApp.Services
 
             while (Command[0].ToLower() != "end")
             {
-                commandInterperter.Interpet(Command[0]);
+                this.Command = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList();
+                commandInterperter.Interpet(Command[0], Command[1], reader, writer);
             }
         }
 
