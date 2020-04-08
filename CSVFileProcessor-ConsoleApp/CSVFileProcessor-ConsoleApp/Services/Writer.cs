@@ -106,19 +106,18 @@ namespace CSVFileProcessor_ConsoleApp.Services
         private ICollection<string[]> SplitData(List<string> data)
         {
             var result = new List<string[]>();
-            int fileCount = data.Count / DefaultFileSpliter;
+            int fileCount = data.Count / fileSplitter;
 
-            for (int i = 1; i <= DefaultFileSpliter; i++)
+            for (int i = 1; i <= fileSplitter; i++)
             {
-                switch (i)
+                if (i == fileSplitter)
                 {
-                    case DefaultFileSpliter:
-                        result.Add(data.ToArray());
-                        break;
-                    default:
-                        result.Add(data.Take(fileCount).ToArray());
-                        data.RemoveRange(0, fileCount);
-                        break;
+                    result.Add(data.ToArray());
+                }
+                else
+                {
+                    result.Add(data.Take(fileCount).ToArray());
+                    data.RemoveRange(0, fileCount);
                 }
             }
 

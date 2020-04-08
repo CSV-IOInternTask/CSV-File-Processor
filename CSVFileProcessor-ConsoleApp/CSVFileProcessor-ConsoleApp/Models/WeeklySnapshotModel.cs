@@ -4,6 +4,9 @@ using System.Text;
 
 namespace CSVFileProcessor_ConsoleApp.Models
 {
+    /// <summary>
+    /// Base Model for keep the split data.
+    /// </summary>
     public class WeeklySnapshotModel
     {
         public WeeklySnapshotModel()
