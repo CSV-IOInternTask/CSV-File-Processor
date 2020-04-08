@@ -10,14 +10,19 @@ namespace CSVFileProcessor.Models
     {
         public string Directory { get; set; }
 
+        public Reader()
+        {
+
+        }
+
         public Reader(string directory)
         {
             this.Directory = directory;
         }
 
-        public ICollection<string> Read()
+        public ICollection<string[]> Read()
         {
-            List<string> data = new List<string>();
+            List<string[]> data = new List<string[]>();
             string line = string.Empty;
 
             using (StreamReader str = new StreamReader(this.Directory))
@@ -25,7 +30,7 @@ namespace CSVFileProcessor.Models
 
                 while ((line = str.ReadLine()) != null)
                 {
-                    data.Add(line.Split(new char[] { '\t', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToString());
+                    data.Add(line.Split(new char[] { '\t', '\n' }, StringSplitOptions.RemoveEmptyEntries));
                 }
             }
             return data;
