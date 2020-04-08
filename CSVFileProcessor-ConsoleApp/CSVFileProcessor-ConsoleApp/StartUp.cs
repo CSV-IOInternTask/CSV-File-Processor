@@ -1,4 +1,5 @@
-﻿using CSVFileProcessor_ConsoleApp.Services;
+﻿using CSVFileProcessor_ConsoleApp.Core;
+using CSVFileProcessor_ConsoleApp.Core.Contracts;
 
 namespace CSVFileProcessor_ConsoleApp
 {
@@ -6,9 +7,8 @@ namespace CSVFileProcessor_ConsoleApp
     {
         static void Main(string[] args)
         {
-            Engine engine = new Engine();
+            IEngine engine = new Engine();
             engine.Run();
-
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using CSVFileProcessor_ConsoleApp.Services.Contracts;
+using System.IO.Enumeration;
 
 namespace CSVFileProcessor_ConsoleApp.Models
 {
@@ -10,41 +11,47 @@ namespace CSVFileProcessor_ConsoleApp.Models
     /// </summary>
     public class Reader : IReader
     {
-        public string Directory { get; set; }
+        private string directory;
+        private string fileName;
+        private string fullDirectoryFileName;
 
-        public string FileName { get; set; }
-
-        private ICollection<string[]> Data { get; set; }
-
-        public Reader()
+        public Reader(string fullDirectoryFileName)
         {
-            Data = new List<string[]>();
+            this.fullDirectoryFileName = fullDirectoryFileName;
         }
 
         public Reader(string directory, string fileName)
-            :this()
         {
-            this.Directory = directory;
-            this.FileName = fileName;
+            this.directory = directory;
+            this.fileName = fileName;
         }
 
         /// <summary>
         /// Reads data from a file and returns ICollection<String[]> for every line
         /// </summary>
         /// <returns>ICollection<String[]></returns>
-        public ICollection<string[]> Read()
+        public ICollection<string> Read(string fullDirectoryFileName = null)
         {
+            var data = new List<string>();
             string line = string.Empty;
 
-            using (StreamReader str = new StreamReader(this.Directory + this.FileName))
+            string path = fullDirectoryFileName;
+
+            if (path == null)
+            {
+                path = directory + fileName;
+            }
+
+            using (StreamReader str = new StreamReader(path))
             {
 
                 while ((line = str.ReadLine()) != null)
                 {
-                    Data.Add(line.Split(new char[] { '\t', '\n' }, StringSplitOptions.RemoveEmptyEntries));
+                    data.Add(line);
                 }
             }
-            return Data;
+
+            return data;
         }
 
     }
