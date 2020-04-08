@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CSVFileProcessor_ConsoleApp.Core.Contracts;
 using CSVFileProcessor_ConsoleApp.Models;
+using CSVFileProcessor_ConsoleApp.Services;
 using CSVFileProcessor_ConsoleApp.Services.Contracts;
 
 namespace CSVFileProcessor_ConsoleApp.Core
@@ -10,33 +11,28 @@ namespace CSVFileProcessor_ConsoleApp.Core
     public class Engine : IEngine
     {
 
-        private List<string> Command;
-
         public Engine()
         {
-            this.Command = new List<string>();
         }
 
         public void Run()
         {
-            this.ShowConsoleUI();
-            
+            Console.WriteLine("Read directory: ");
+            string readDirectory = Console.ReadLine();
 
-            IReader reader = new Reader();
+            Console.WriteLine("Directory to write: ");
+            string writeDirectory = Console.ReadLine();
+
+            Console.WriteLine("File name to write: ");
+            string fileNameToWrite = Console.ReadLine();
+
+            IReader reader = new Reader(readDirectory);
             IWriter writer = new Writer();
-            CommandInterpreter commandInterperter = new CommandInterpreter();
 
-            while (Command[0].ToLower() != "end")
-            {
-                this.Command = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList();
-                commandInterperter.Interpet(Command[0], Command[1], reader, writer);
-            }
-        }
+            writer.WriteDataSynchronosly(reader.Read(), writeDirectory, fileNameToWrite);
 
-        public void ShowConsoleUI()
-        {
-            Console.WriteLine("-------UI------");
-            Console.WriteLine("---Commands: SetFilePath {FilePath} // SetFileName {FileName} // FilesCount {FileCountNumber}");
+
+            
         }
     }
 }

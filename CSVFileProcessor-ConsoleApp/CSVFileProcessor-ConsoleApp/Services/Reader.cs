@@ -15,15 +15,14 @@ namespace CSVFileProcessor_ConsoleApp.Services
         private string fileName;
         private string fullDirectoryFileName;
 
+        public Reader()
+        {
+
+        }
+
         public Reader(string fullDirectoryFileName)
         {
             this.fullDirectoryFileName = fullDirectoryFileName;
-        }
-
-        public Reader(string directory, string fileName)
-        {
-            this.directory = directory;
-            this.fileName = fileName;
         }
 
         /// <summary>
