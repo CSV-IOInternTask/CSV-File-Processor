@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace CSVFileProcessor_ConsoleApp.Services
+﻿namespace CSVFileProcessor_ConsoleApp.Services
 {
+    using System.Linq;
+    using System.Collections.Generic;
+
     public class CommandInterpreter
     {
         private readonly List<string> knownCommands;

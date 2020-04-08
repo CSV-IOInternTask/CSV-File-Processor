@@ -1,15 +1,16 @@
 ﻿using CSVFileProcessor.Models;
 using CSVFileProcessor.Services;
 using CSVFileProcessor.Services.Contracts;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace CSVFileProcessor_ConsoleApp.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Engine
     {
+
         private List<string> Command;
 
         public Engine()

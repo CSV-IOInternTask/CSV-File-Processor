@@ -1,10 +1,11 @@
 ﻿using CSVFileProcessor.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace CSVFileProcessor.Models
 {
+    using System;
+    using System.IO;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Reads data from a file 
     /// </summary>
