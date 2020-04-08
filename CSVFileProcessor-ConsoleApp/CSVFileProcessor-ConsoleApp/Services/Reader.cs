@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using CSVFileProcessor_ConsoleApp.Services.Contracts;
 using System.IO.Enumeration;
 
-namespace CSVFileProcessor_ConsoleApp.Models
+namespace CSVFileProcessor_ConsoleApp.Services
 {
     /// <summary>
     /// Reads data from a file 
@@ -27,22 +27,20 @@ namespace CSVFileProcessor_ConsoleApp.Models
         }
 
         /// <summary>
-        /// Reads data from a file and returns ICollection<String[]> for every line
+        /// Reads data from a file and returns ICollection<string> for every line
         /// </summary>
-        /// <returns>ICollection<String[]></returns>
-        public ICollection<string> Read(string fullDirectoryFileName = null)
+        /// <returns>ICollection<string></returns>
+        public ICollection<string> Read()
         {
             var data = new List<string>();
             string line = string.Empty;
 
-            string path = fullDirectoryFileName;
-
-            if (path == null)
+            if (fullDirectoryFileName == null)
             {
-                path = directory + fileName;
+                fullDirectoryFileName = directory + fileName;
             }
 
-            using (StreamReader str = new StreamReader(path))
+            using (StreamReader str = new StreamReader(fullDirectoryFileName))
             {
 
                 while ((line = str.ReadLine()) != null)

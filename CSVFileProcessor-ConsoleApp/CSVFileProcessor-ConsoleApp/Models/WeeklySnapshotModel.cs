@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CSVFileProcessor.Models
+namespace CSVFileProcessor_ConsoleApp.Models
 {
     public class WeeklySnapshotModel
     {
