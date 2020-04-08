@@ -7,6 +7,6 @@ namespace CSVFileProcessor_ConsoleApp.Services.Contracts
     {
         void WriteDataSynchronosly(ICollection<string> data, string path, string fileName);
 
-        Task WriteDataAsync(ICollection<string[]> data, string path, string fileName);
+        Task WriteDataAsync(ICollection<string> data, string path, string fileName);
     }
 }

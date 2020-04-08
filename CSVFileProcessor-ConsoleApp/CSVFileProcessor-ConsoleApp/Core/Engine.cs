@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using CSVFileProcessor_ConsoleApp.Core.Contracts;
 using CSVFileProcessor_ConsoleApp.Models;
@@ -29,10 +30,13 @@ namespace CSVFileProcessor_ConsoleApp.Core
             IReader reader = new Reader(readDirectory);
             IWriter writer = new Writer();
 
+            var stopwatch = new Stopwatch();
+            Console.WriteLine("Timer has started.");
+            stopwatch.Start();
+
             writer.WriteDataSynchronosly(reader.Read(), writeDirectory, fileNameToWrite);
 
-
-            
+            Console.WriteLine(stopwatch.Elapsed.TotalSeconds);
         }
     }
 }
